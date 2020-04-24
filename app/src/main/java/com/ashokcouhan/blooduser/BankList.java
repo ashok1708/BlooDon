@@ -56,17 +56,17 @@ public class BankList extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
          getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
-         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+         getSupportActionBar().setDisplayShowHomeEnabled(true);
+         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
              @Override
-             public boolean onMenuItemClick(MenuItem item) {
-                 if(item.getItemId()==R.drawable.ic_arrow_back_black_24dp)
-                 {
-                     Toast.makeText(BankList.this, "Click", Toast.LENGTH_SHORT).show();
-                 }
-                 return false;
+             public void onClick(View v) {
+                 onBackPressed();
+                 finish();
              }
          });
+
+
 
         listbank=new ArrayList<>();
 
@@ -145,4 +145,7 @@ public class BankList extends AppCompatActivity {
         super.onBackPressed();
         this.finish();
     }
+
+
+
 }

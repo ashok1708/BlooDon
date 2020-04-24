@@ -21,9 +21,11 @@ public class BookBlood extends AppCompatActivity {
     ImageView ivCheck;
 
     String group,id,requireBlood,unit,Name;
+    long currentSystemTime;
 
-    FirebaseDatabase database;
+    FirebaseDatabase databaseReq,databaseOrder;
     DatabaseReference requests,userOrder;
+    MyOrder myOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,12 @@ public class BookBlood extends AppCompatActivity {
         id=getIntent().getStringExtra("id");
         requireBlood=getIntent().getStringExtra("requireBlood");
 
-        database = FirebaseDatabase.getInstance();
-        requests = database.getReference("bloodbank").child(id).child("Requests");
-        userOrder=database.getReference("user").child(Common.currentUser.getMobile()).child("My Order");
+        databaseReq = FirebaseDatabase.getInstance();
+        databaseOrder = FirebaseDatabase.getInstance();
+
+        requests = databaseReq.getReference("bloodbank").child(id).child("Requests");
+        userOrder=databaseOrder.getReference("user").child(Common.currentUser.getMobile()).child("My Order");
+         myOrder=new MyOrder(id,Name,group,requireBlood);
 
         tvName=findViewById(R.id.bankName);
         tvLocation=findViewById(R.id.bankLocation);
@@ -98,16 +103,16 @@ public class BookBlood extends AppCompatActivity {
          builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int which) {
-                 btnSubmit.setVisibility(View.GONE);
-                 btnCancle.setVisibility(View.GONE);
+                 btnSubmit.setVisibility(View.INVISIBLE);
+                 btnCancle.setVisibility(View.INVISIBLE);
                  ivCheck.setVisibility(View.VISIBLE);
                  tvMsg.setVisibility(View.VISIBLE);
                  btnDone.setVisibility(View.VISIBLE);
 
-                 long currentSystemTime=System.currentTimeMillis();  //in milli seconds.. for transaction id
-                 MyOrder myOrder=new MyOrder(id,Name,group,requireBlood);
+                  currentSystemTime=System.currentTimeMillis();  //in milli seconds.. for transaction id
 
-                 userOrder.child(String.valueOf(currentSystemTime)).setValue(myOrder);
+
+
 
                  Requests request = new Requests(Common.currentUser.getName(),
                             Common.currentUser.getMobile(),
@@ -115,6 +120,7 @@ public class BookBlood extends AppCompatActivity {
                             group,
                          requireBlood);
                  requests.child(String.valueOf(currentSystemTime)).setValue(request);
+                 setToUser();
 
              }
          });
@@ -127,6 +133,27 @@ public class BookBlood extends AppCompatActivity {
          });
          builder.show();
     }
+
+    private void setToUser()
+    {
+        Thread thread=new Thread()
+        {
+            public void run(){
+                try {
+                    sleep(2000);
+
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+                finally {
+                    userOrder.child(String.valueOf(currentSystemTime)).setValue(myOrder);
+                }
+            }
+        };
+
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

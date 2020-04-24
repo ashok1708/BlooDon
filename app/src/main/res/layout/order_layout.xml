@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/loginCard"
+    app:cardCornerRadius="@dimen/loginCardRadius"
+    android:elevation="5dp"
+    app:cardElevation="5dp"
+    android:outlineSpotShadowColor="@color/colorTextView"
+    android:outlineAmbientShadowColor="@color/colorTextView"
+   android:layout_margin="10dp"
+    android:background="@color/whiteCardColor">
+
+    <LinearLayout
+        style="@style/linearParent"
+        android:layout_gravity="center"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="Order Id"
+                android:textColor="@color/colorTextView"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:id="@+id/orderId"
+                android:text="26166551551"
+                android:layout_marginLeft="150dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/orderId"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:id="@+id/userGroupp"
+
+                android:text="Blood Group"
+                android:textColor="@color/colorTextView"
+                android:textSize="16dp"/>
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/orderId"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:id="@+id/uGroup"
+
+                android:layout_marginLeft="150dp"
+                android:text="A+"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/uGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+
+                android:id="@+id/userAgee"
+                android:text="Unit "
+                android:textColor="@color/colorTextView"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/uGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="150dp"
+                android:id="@+id/orderUnit"
+                android:text="25"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/orderUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="Order Status"
+                android:textColor="@color/colorTextView"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/orderUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:id="@+id/status"
+                android:layout_marginLeft="150dp"
+                android:text="Order Status"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp"/>
+
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

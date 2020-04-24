@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/loginCard"
+    app:cardCornerRadius="@dimen/loginCardRadius"
+    android:elevation="5dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/loginViewsMargin"
+    android:layout_marginBottom="@dimen/loginViewsMargin"
+    android:background="@color/whiteCardColor">
+
+
+
+    <LinearLayout
+        style="@style/linearParent"
+        android:layout_gravity="center"
+
+        android:padding="@dimen/loginViewsMargin">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/bankName"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="Paras Blood bank"
+                android:textColor="@color/primaryTextColor"
+                android:textStyle="bold|italic"
+                android:textSize="28dp"
+                />
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/bankName"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/bankLocation"
+                android:text="Jodhpur"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/bankLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/userGroupp"
+
+                android:text="Blood Group : "
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24dp"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/bankLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/chooseGroup"
+
+                android:layout_marginLeft="170dp"
+                android:text="A+"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/chooseGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+
+                android:id="@+id/userAgee"
+                android:text="Unit : "
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/chooseGroup"
+                android:layout_width="wrap_content"
+
+                android:layout_height="30dp"
+                android:layout_marginLeft="80dp"
+                android:id="@+id/groupUnit"
+                android:text="25"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24dp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

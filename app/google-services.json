@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "742794947739",
+    "firebase_url": "https://bloodhelp-b4d4f.firebaseio.com",
+    "project_id": "bloodhelp-b4d4f",
+    "storage_bucket": "bloodhelp-b4d4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742794947739:android:80b06437b3a97c65f8ea3e",
+        "android_client_info": {
+          "package_name": "com.ashokcouhan.Bloodbank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742794947739-femvqamhfoh4vv11erp8572t2iav8mnl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ashokcouhan.Bloodbank",
+            "certificate_hash": "15b4aa90ccb92839321e3b2ce7087a6620465f93"
+          }
+        },
+        {
+          "client_id": "742794947739-dt2e6nh5heoh93cjna7n1cnvgjo6njb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiH9mcIyESATTMwTVYBK0cQvGQJQwbpN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742794947739-dt2e6nh5heoh93cjna7n1cnvgjo6njb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742794947739:android:2de696c99e3a1aecf8ea3e",
+        "android_client_info": {
+          "package_name": "com.ashokcouhan.blooduser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742794947739-qbnudv8bouoskhcdijki3r0okj338ltj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ashokcouhan.blooduser",
+            "certificate_hash": "15b4aa90ccb92839321e3b2ce7087a6620465f93"
+          }
+        },
+        {
+          "client_id": "742794947739-dt2e6nh5heoh93cjna7n1cnvgjo6njb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiH9mcIyESATTMwTVYBK0cQvGQJQwbpN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742794947739-dt2e6nh5heoh93cjna7n1cnvgjo6njb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742794947739:android:9b3d4cb8294c5a05f8ea3e",
+        "android_client_info": {
+          "package_name": "com.example.sihprojects"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742794947739-r84kgcuin8s97f8rqo5931kmep1v01id.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sihprojects",
+            "certificate_hash": "b5518a4ce6014ef972fcb7bb611deeb5d4d8f659"
+          }
+        },
+        {
+          "client_id": "742794947739-mghaeg618ji5pnlu6usdkjnl6ucbanrj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sihprojects",
+            "certificate_hash": "15b4aa90ccb92839321e3b2ce7087a6620465f93"
+          }
+        },
+        {
+          "client_id": "742794947739-dt2e6nh5heoh93cjna7n1cnvgjo6njb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiH9mcIyESATTMwTVYBK0cQvGQJQwbpN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742794947739-dt2e6nh5heoh93cjna7n1cnvgjo6njb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

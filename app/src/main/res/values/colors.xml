@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#6E08AC</color>
+    <color name="ashokColor">#54D1F0</color>
+    <color name="colorBackground">#333C46</color>
+    <color name="colorSplashText">#F0F0F0</color>
+    <color name="colorProgressBar">#FFCE511C</color>
+    <color name="colorTextView">#83898E</color>
+    <color name="colorbc">#1AECC5</color>
+    <color name="colorforbac">#FBF6E9</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorSecondaryDark">#001970</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorForBack">#F3F2EF</color>
+
+
+    <!--colors for modern ui-->
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#6E08AC</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
+    <color name="borderColor">#C9C6CA</color>
+    <color name="actionBarColor">#8E0CDC</color>
+
+
+    <!--colors for profile-->
+    <color name="profilePrimaryDark">#6E08AC</color>
+    <color name="profileAccentColor">#F7F7F7</color>
+
+    <color name="profileBackground">#fff</color>
+    <color name="blackTextColor">#000</color>
+    <color name="profileEditTextColor">#707070</color>
+</resources>

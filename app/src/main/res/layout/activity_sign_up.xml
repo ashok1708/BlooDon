@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ScrollViewCount"
+        >
+        <LinearLayout
+            style="@style/linearParent"
+            android:orientation="vertical"
+            >
+
+
+            <TextView
+                style="@style/headerTextPrimary"
+                android:text="Sign Up"
+                android:textSize="26dp"
+                android:fontFamily="@font/supermolot_440"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp">
+                <EditText
+                    android:id="@+id/edtName"
+                    style="@style/modifiedEditText"
+                    android:hint="Name"
+                    android:maxLines="1"
+                    android:text="Ashok Chouhan"
+
+                    android:inputType="textPersonName"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:id="@+id/edtMobile"
+                    style="@style/modifiedEditText"
+                    android:hint="Mobile Number"
+                    android:text="9509856067"
+                    android:maxLines="1"
+                    android:maxEms="10"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputfather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:id="@+id/edtFather"
+                    style="@style/modifiedEditText"
+                    android:hint="Father Name/Husband Name"
+                    android:maxLines="1"
+                    android:text="Ashok Chouhan"
+
+                    android:inputType="textPersonName"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:id="@+id/edtPassword"
+                    style="@style/modifiedEditText"
+                    android:hint=" Set Password"
+                    android:maxLines="1"
+                    android:text="12345"
+                    android:maxEms="10"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.tiper.MaterialSpinner
+                android:id="@+id/spnGender"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp"
+                android:hint="Gender"
+                app:spinnerMode="dialog"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp"
+                >
+                <EditText
+                    android:id="@+id/edtAge"
+                    style="@style/modifiedEditText"
+                    android:hint="Age"
+                    android:maxLines="1"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.tiper.MaterialSpinner
+                android:id="@+id/spnGroup"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_centerVertical="true"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp"
+                app:spinnerMode="dialog"
+                android:hint="Blood Group"
+
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputAdrees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp"
+                >
+                <EditText
+                    android:id="@+id/edtAddress"
+                    style="@style/modifiedEditText"
+                    android:hint="Address"
+                    android:inputType="textPostalAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSignUp"
+                style="@style/loginButton"
+                android:text="Sign Up"
+                android:textSize="20dp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/supermolot_440"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

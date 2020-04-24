@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SearchFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayoutSearch"
+        android:background="@color/primaryTextColor"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_search"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorAccent"
+            app:title="Search Blood"
+            app:titleTextColor="@color/whiteCardColor"
+
+            />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ScrollViewCount"
+        >
+        <LinearLayout
+            style="@style/linearParent"
+            android:orientation="vertical"
+            android:layout_marginTop="80dp"
+            >
+            <com.tiper.MaterialSpinner
+                android:id="@+id/spnGroup"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_centerVertical="true"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Blood Group"
+
+                android:layout_margin="10dp"
+                app:spinnerMode="dialog"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputAdrees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp">
+                  <EditText
+                     android:id="@+id/edtQunt"
+                     style="@style/modifiedEditText"
+                     android:hint="Qunatity"
+                     android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputALocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_margin="6dp">
+                <EditText
+                    android:id="@+id/edtLocation"
+                    style="@style/modifiedEditText"
+                    android:hint="Location"
+                    android:inputType="textPostalAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+
+                android:id="@+id/btnSerachGroup"
+                style="@style/loginButton"
+                android:text="Search"
+                android:textSize="20dp"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"/>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

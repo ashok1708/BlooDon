@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/custom_ripple"
+    android:padding="3dp">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       
+        >
+
+        <TextView
+            android:text="Bank Name"
+            android:layout_width="match_parent"
+
+            android:layout_height="50dp"
+            android:id="@+id/tvName"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textColor="@color/primaryTextColor"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingLeft="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/primaryTextColor"
+                android:text="Group: "/>
+
+            <TextView
+                android:id="@+id/group"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingLeft="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/primaryTextColor"
+                android:text="A+"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/primaryTextColor"
+                android:text="Unit: "/>
+
+            <TextView
+                android:id="@+id/units"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingLeft="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/primaryTextColor"
+                android:text="3 "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/primaryTextColor"
+                android:text="City: "/>
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingLeft="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/primaryTextColor"
+                android:text="Jodhpur "/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

@@ -57,7 +57,7 @@ public class OrderStatus extends AppCompatActivity {
      String getBankId()
     {
         final String[] id = new String[1];
-        myOrder=FirebaseDatabase.getInstance().getReference("user").child(Common.currentUser.getMobile()).child("My Order");
+        myOrder=FirebaseDatabase.getInstance().getReference("user").child(Common.currentUser.getMobile()).child("Myorder");
         myOrder.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -16,6 +16,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.ashokcouhan.blooduser.Common.Common;
 import com.ashokcouhan.blooduser.Model.Requests;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,8 +41,9 @@ public class ListenOrder extends Service implements ChildEventListener {
     public void onCreate() {
         super.onCreate();
 
+        FirebaseApp.initializeApp(this);
         db=FirebaseDatabase.getInstance();
-        reference=db.getReference("user").child(Common.currentUser.getMobile()).child("My Order");
+        reference=db.getReference("user").child(Common.currentUser.getMobile()).child("Myorder");
     }
 
     @Override

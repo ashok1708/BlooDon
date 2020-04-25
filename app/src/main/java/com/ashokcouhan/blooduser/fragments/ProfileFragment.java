@@ -99,7 +99,9 @@ public class ProfileFragment extends Fragment {
 
           }
           case R.id.logout:{
-                     Paper.book().destroy();
+
+                     Paper.book().delete(Common.USER_KEY);
+                     Paper.book().delete(Common.PWD_KEY);
                        Intent mainIntent = new Intent(getContext(), Login.class);
                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
                        startActivity(mainIntent);

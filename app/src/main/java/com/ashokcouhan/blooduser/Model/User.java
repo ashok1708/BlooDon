@@ -1,7 +1,13 @@
 package com.ashokcouhan.blooduser.Model;
 
+import com.ashokcouhan.blooduser.MyOrder;
+
+import java.util.ArrayList;
+
 public class User {
     private String name,password,mobile,fatherName,age,sex,bloodGroup,address;
+
+
 
     public User(String password, String mobile) {
         this.password = password;
@@ -17,7 +23,10 @@ public class User {
         this.sex = sex;
         this.bloodGroup = bloodGroup;
         this.address = address;
+
     }
+
+
 
     public User() {
     }
@@ -85,4 +94,10 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+
+
+
+
+
 }

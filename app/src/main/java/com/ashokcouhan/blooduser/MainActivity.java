@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 
 import android.content.DialogInterface;
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
     Toolbar toolbar;
-
-
+    ViewPager viewPager;
+    private ViewPagerAdapter mViewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +39,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
+       // viewPager=findViewById(R.id.viewPager);
+        mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(mViewPagerAdapter);
         //toolbar=findViewById(R.id.toolbar);
 
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+
         openFragment(HomeFragment.newInstance("", ""));
+
 
     }
     public void openFragment(Fragment fragment) {
@@ -66,24 +72,28 @@ public class MainActivity extends AppCompatActivity {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 //toolbar.setTitle("Search");
                             }
+
                             openFragment(SearchFragment.newInstance("", ""));
                             return true;
                         case R.id.action_donate:
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 //toolbar.setTitle("Donate");
                             }
+
                             openFragment(DonateFragment.newInstance("", ""));
                             return true;
                         case R.id.action_profile:
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 //toolbar.setTitle("Profile");
                             }
+                            viewPager.setCurrentItem(3);
                             openFragment(ProfileFragment.newInstance("", ""));
                             return true;
                     }
                     return false;
                 }
             };
+
 
     public void setNavigationVisibility(boolean visible) {
         if (bottomNavigation.isShown() && !visible) {
@@ -96,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             //bottomNavigation.setVisibility(View.VISIBLE);
         }
     }
+
     public void hideBottomNavigationView() {
         bottomNavigation.animate().translationY(bottomNavigation.getHeight());
     }
@@ -103,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     public void showBottomNavigationView() {
         bottomNavigation.animate().translationY(0);
     }
+
 
     @Override
     public void onBackPressed() {

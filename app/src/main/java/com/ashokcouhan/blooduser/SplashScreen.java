@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ashokcouhan.blooduser.Common.Common;
@@ -21,17 +25,25 @@ import io.paperdb.Paper;
 public class SplashScreen extends AppCompatActivity {
 
     DatabaseReference reference;
+    private ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
         FirebaseApp.initializeApp(this);
         reference= FirebaseDatabase.getInstance().getReference().child("user");
 
         Paper.init(this);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getSupportActionBar().hide();
+        logo=findViewById(R.id.logoview);
+        final Animation animation1 =
+                AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.fade);
+        logo.startAnimation(animation1);
         Thread thread = new Thread()
         {
             @Override
@@ -39,7 +51,9 @@ public class SplashScreen extends AppCompatActivity {
             {
                 try
                 {
-                    sleep(0600);
+                    sleep(2000);
+
+
 
                 }
 
@@ -65,8 +79,14 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         thread.start();
-    }
 
+    }
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
     private void login(final String mobile, final String pass)
     {
 
@@ -104,14 +124,4 @@ public class SplashScreen extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onPause()
-    {
-        super.onPause();
-
-        finish();
-    }
-
-
 }

@@ -94,20 +94,7 @@
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"/>
-        <Button
 
-            android:id="@+id/btnCancel"
-            android:background="@drawable/login_button_bk"
-            android:layout_width="170dp"
-            android:layout_height="50dp"
-            android:textColor="@color/colorWhite"
-            android:text="Cancle"
-            android:textSize="20dp"
-            android:textStyle="normal"
-            android:textAllCaps="false"
-            android:layout_marginLeft="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"/>
 
 
     </RelativeLayout>

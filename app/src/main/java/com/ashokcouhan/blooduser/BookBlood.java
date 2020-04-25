@@ -1,23 +1,38 @@
 package com.ashokcouhan.blooduser;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashokcouhan.blooduser.Common.Common;
 import com.ashokcouhan.blooduser.Model.Requests;
+
+import com.ashokcouhan.blooduser.Model.User;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import io.paperdb.Paper;
 
 public class BookBlood extends AppCompatActivity {
     TextView tvName,tvLocation,tvUnit,tvGroup,tvMsg;
-    Button btnSubmit,btnCancle,btnDone;
+    Button btnSubmit,btnDone;
     ImageView ivCheck;
 
     String group,id,requireBlood,unit,Name;
@@ -25,13 +40,15 @@ public class BookBlood extends AppCompatActivity {
 
     FirebaseDatabase databaseReq,databaseOrder;
     DatabaseReference requests,userOrder;
-    MyOrder myOrder;
+   MyOrder myOrder;
+    Requests request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_blood);
 
+        FirebaseApp.initializeApp(this);
          Name=getIntent().getStringExtra("name");
         group=getIntent().getStringExtra("group");
         unit=getIntent().getStringExtra("unit");
@@ -39,19 +56,28 @@ public class BookBlood extends AppCompatActivity {
         id=getIntent().getStringExtra("id");
         requireBlood=getIntent().getStringExtra("requireBlood");
 
+
         databaseReq = FirebaseDatabase.getInstance();
         databaseOrder = FirebaseDatabase.getInstance();
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        Paper.init(this);
 
         requests = databaseReq.getReference("bloodbank").child(id).child("Requests");
-        userOrder=databaseOrder.getReference("user").child(Common.currentUser.getMobile()).child("My Order");
+        userOrder=databaseOrder.getReference("user").child(Common.currentUser.getMobile());
+
          myOrder=new MyOrder(id,Name,group,requireBlood);
+        request = new Requests(Common.currentUser.getName(),
+                Common.currentUser.getMobile(),
+                Common.currentUser.getAddress(),
+                group,
+                requireBlood);
 
         tvName=findViewById(R.id.bankName);
         tvLocation=findViewById(R.id.bankLocation);
         tvUnit=findViewById(R.id.groupUnit);
         tvGroup=findViewById(R.id.chooseGroup);
         btnSubmit=findViewById(R.id.btnConfirm);
-        btnCancle=findViewById(R.id.btnCancel);
+
         btnDone=findViewById(R.id.btnDone);
         tvMsg=findViewById(R.id.tvMsg);
         ivCheck=findViewById(R.id.ivCheck);
@@ -90,7 +116,8 @@ public class BookBlood extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertDialog();
+                currentSystemTime=System.currentTimeMillis();  //in milli seconds.. for transaction id
+                 showAlertDialog();
             }
         });
 
@@ -103,24 +130,26 @@ public class BookBlood extends AppCompatActivity {
          builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int which) {
+
+                 userOrder.child("Myorder").child(String.valueOf(currentSystemTime)).setValue(myOrder, new DatabaseReference.CompletionListener() {
+                     @Override
+                     public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                         System.err.println("Error adding user to whitelist!");
+                         //databaseError.toException().printStackTrace();
+                     }
+                 });
+
+                 requests.child(String.valueOf(currentSystemTime)).setValue(request);
+
+                 // Log.d("error","this sis time to check");
+                 Toast.makeText(BookBlood.this, "Request is send to bank", Toast.LENGTH_SHORT).show();
                  btnSubmit.setVisibility(View.INVISIBLE);
-                 btnCancle.setVisibility(View.INVISIBLE);
+
                  ivCheck.setVisibility(View.VISIBLE);
                  tvMsg.setVisibility(View.VISIBLE);
                  btnDone.setVisibility(View.VISIBLE);
 
-                  currentSystemTime=System.currentTimeMillis();  //in milli seconds.. for transaction id
 
-
-
-
-                 Requests request = new Requests(Common.currentUser.getName(),
-                            Common.currentUser.getMobile(),
-                            Common.currentUser.getAddress(),
-                            group,
-                         requireBlood);
-                 requests.child(String.valueOf(currentSystemTime)).setValue(request);
-                 setToUser();
 
              }
          });
@@ -136,27 +165,18 @@ public class BookBlood extends AppCompatActivity {
 
     private void setToUser()
     {
-        Thread thread=new Thread()
-        {
-            public void run(){
-                try {
-                    sleep(2000);
+        Handler handle= new Handler(getMainLooper());
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
 
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-                finally {
-                    userOrder.child(String.valueOf(currentSystemTime)).setValue(myOrder);
-                }
+                userOrder.child(String.valueOf(System.currentTimeMillis())).setValue(myOrder);
+                requests.child(String.valueOf(currentSystemTime)).setValue(request);
+
             }
         };
-
+        handle.post(runnable);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
-    }
+
 }

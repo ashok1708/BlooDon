@@ -3,11 +3,11 @@ package com.ashokcouhan.blooduser;
 
 public class MyOrder
 {
-    String bankid,bankName,group,units,status;
+   private String bankid,bankname,group,units,status;
 
-    public MyOrder(String bankid, String bankName, String group, String units) {
+    public MyOrder(String bankid, String bankname, String group, String units) {
         this.bankid = bankid;
-        this.bankName = bankName;
+        this.bankname = bankname;
         this.group = group;
         this.units = units;
         this.status="0";
@@ -15,7 +15,7 @@ public class MyOrder
 
     public MyOrder(String bankid, String bankName, String group, String units, String status) {
         this.bankid = bankid;
-        this.bankName = bankName;
+        this.bankname = bankName;
         this.group = group;
         this.units = units;
         this.status = status;
@@ -33,11 +33,11 @@ public class MyOrder
     }
 
     public String getBankName() {
-        return bankName;
+        return bankname;
     }
 
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
+    public void setBankName(String bankname) {
+        this.bankname = bankname;
     }
 
     public String getGroup() {

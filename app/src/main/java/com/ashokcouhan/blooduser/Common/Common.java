@@ -12,6 +12,7 @@ public class Common {
 
     public static final String USER_KEY = "User";
     public static final String PWD_KEY = "Password";
+    public static final String BANK_ID = "bankid";
 
     public  static String convertCodeToStatus(String code)
     {

@@ -10,6 +10,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.ashokcouhan.blooduser.Common.Common;
+import com.ashokcouhan.blooduser.Model.Myorder;
 import com.ashokcouhan.blooduser.Model.Requests;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +28,7 @@ public class OrderStatus extends AppCompatActivity {
 
 
     DatabaseReference reference,myOrder;
-    MyOrder order;
+    Myorder order;
     static String bankId;
 
     @Override
@@ -64,7 +65,7 @@ public class OrderStatus extends AppCompatActivity {
 //                Log.d("Order",dataSnapshot.getValue().toString());
                 for(DataSnapshot snapshot: dataSnapshot.getChildren())
                 {
-                    order=snapshot.getValue(MyOrder.class);
+                    order=snapshot.getValue(Myorder.class);
                     id[0] =order.getBankid();
                     Log.d("id",order.getBankid());
                     break;

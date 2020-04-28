@@ -7,6 +7,9 @@ import android.net.NetworkInfo;
 
 import com.ashokcouhan.blooduser.Model.User;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Common {
     public static User currentUser;
 
@@ -42,6 +45,13 @@ public class Common {
 
         }
         return  false;
+    }
+
+    public static String dateFormat(long milliseconds)
+    {
+        SimpleDateFormat sdf= new SimpleDateFormat(" dd-MM-yyyy");
+         return sdf.format(new Date(milliseconds));
+
     }
 
 }

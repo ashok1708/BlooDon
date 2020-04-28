@@ -18,6 +18,8 @@ import com.ashokcouhan.blooduser.Common.Common;
 import com.ashokcouhan.blooduser.Login;
 import com.ashokcouhan.blooduser.R;
 import com.ashokcouhan.blooduser.SplashScreen;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import io.paperdb.Paper;
 
@@ -28,8 +30,10 @@ import io.paperdb.Paper;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
-  TextView tvName,tvGroup,tvAge,tvMobile,tvAddress,tvFather,tvMainName;
-  Toolbar toolbar;
+ private TextView tvName,tvGroup,tvAge,tvMobile,tvAddress,tvFather,tvMainName;
+  private Toolbar toolbar;
+  private CollapsingToolbarLayout collapsingToolbarLayout;
+  private AppBarLayout appBarLayout;
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
   private static final String ARG_PARAM1 = "param1";
@@ -84,6 +88,10 @@ public class ProfileFragment extends Fragment {
     tvAddress=root.findViewById(R.id.addressTV);
     tvFather=root.findViewById(R.id.fatherTV);
     toolbar=root.findViewById(R.id.toolbar_profile);
+    collapsingToolbarLayout= root.findViewById(R.id.toolbar_layout);
+    appBarLayout=root.findViewById(R.id.app_bar);
+
+
 
     toolbar.inflateMenu(R.menu.profile_menu);
     toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {

@@ -1,27 +1,18 @@
-package com.ashokcouhan.blooduser;
+package com.ashokcouhan.blooduser.Model;
 
+public class Myorder {
 
-public class MyOrder
-{
-   private String bankid,bankname,group,units,status;
+    private String bankid,bankname,group,units,status;
 
-    public MyOrder(String bankid, String bankname, String group, String units) {
+    public Myorder() {
+    }
+
+    public Myorder(String bankid, String bankname, String group, String units) {
         this.bankid = bankid;
         this.bankname = bankname;
         this.group = group;
         this.units = units;
         this.status="0";
-    }
-
-    public MyOrder(String bankid, String bankName, String group, String units, String status) {
-        this.bankid = bankid;
-        this.bankname = bankName;
-        this.group = group;
-        this.units = units;
-        this.status = status;
-    }
-
-    public MyOrder() {
     }
 
     public String getBankid() {
@@ -32,11 +23,11 @@ public class MyOrder
         this.bankid = bankid;
     }
 
-    public String getBankName() {
+    public String getBankname() {
         return bankname;
     }
 
-    public void setBankName(String bankname) {
+    public void setBankname(String bankname) {
         this.bankname = bankname;
     }
 

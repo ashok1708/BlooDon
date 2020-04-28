@@ -18,10 +18,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ashokcouhan.blooduser.Common.Common;
+import com.ashokcouhan.blooduser.Model.Myorder;
 import com.ashokcouhan.blooduser.Model.Requests;
 
 import com.ashokcouhan.blooduser.Model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import io.paperdb.Paper;
 
-public class BookBlood extends AppCompatActivity {
+public class BookBlood extends AppCompatActivity  {
     TextView tvName,tvLocation,tvUnit,tvGroup,tvMsg;
     Button btnSubmit,btnDone;
     ImageView ivCheck;
@@ -40,7 +44,7 @@ public class BookBlood extends AppCompatActivity {
 
     FirebaseDatabase databaseReq,databaseOrder;
     DatabaseReference requests,userOrder;
-   MyOrder myOrder;
+   Myorder myOrder;
     Requests request;
 
     @Override
@@ -59,13 +63,13 @@ public class BookBlood extends AppCompatActivity {
 
         databaseReq = FirebaseDatabase.getInstance();
         databaseOrder = FirebaseDatabase.getInstance();
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
         Paper.init(this);
 
         requests = databaseReq.getReference("bloodbank").child(id).child("Requests");
-        userOrder=databaseOrder.getReference("user").child(Common.currentUser.getMobile());
+        userOrder=databaseOrder.getReference("user").child(Common.currentUser.getMobile()).child("Myorder");
 
-         myOrder=new MyOrder(id,Name,group,requireBlood);
+         myOrder=new Myorder(id,Name,group,requireBlood);
         request = new Requests(Common.currentUser.getName(),
                 Common.currentUser.getMobile(),
                 Common.currentUser.getAddress(),
@@ -131,18 +135,24 @@ public class BookBlood extends AppCompatActivity {
              @Override
              public void onClick(DialogInterface dialog, int which) {
 
-                 userOrder.child("Myorder").child(String.valueOf(currentSystemTime)).setValue(myOrder, new DatabaseReference.CompletionListener() {
-                     @Override
-                     public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                         System.err.println("Error adding user to whitelist!");
-                         //databaseError.toException().printStackTrace();
-                     }
-                 });
+                 try {
+                     userOrder.child(String.valueOf(currentSystemTime)).setValue(myOrder);
+                     Log.d("Error", "get error");
+                 }
+                 catch (Exception e)
+                 {
+                     e.printStackTrace();
+                 }
+
+
+
+
+                 Toast.makeText(BookBlood.this, "Request is send to bank", Toast.LENGTH_SHORT).show();
+
 
                  requests.child(String.valueOf(currentSystemTime)).setValue(request);
-
                  // Log.d("error","this sis time to check");
-                 Toast.makeText(BookBlood.this, "Request is send to bank", Toast.LENGTH_SHORT).show();
+
                  btnSubmit.setVisibility(View.INVISIBLE);
 
                  ivCheck.setVisibility(View.VISIBLE);
@@ -163,20 +173,7 @@ public class BookBlood extends AppCompatActivity {
          builder.show();
     }
 
-    private void setToUser()
-    {
-        Handler handle= new Handler(getMainLooper());
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
 
-                userOrder.child(String.valueOf(System.currentTimeMillis())).setValue(myOrder);
-                requests.child(String.valueOf(currentSystemTime)).setValue(request);
-
-            }
-        };
-        handle.post(runnable);
-    }
 
 
 }

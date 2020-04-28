@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import com.ashokcouhan.blooduser.Common.Common;
+import com.ashokcouhan.blooduser.Model.Myorder;
 import com.ashokcouhan.blooduser.Model.Requests;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
@@ -63,11 +64,11 @@ public class ListenOrder extends Service implements ChildEventListener {
     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s)
     {
         //Trigger here...
-        MyOrder requests = dataSnapshot.getValue(MyOrder.class);
+        Myorder requests = dataSnapshot.getValue(Myorder.class);
         showNotification(dataSnapshot.getKey(),requests);
     }
 
-    private void showNotification(String key, MyOrder requests)
+    private void showNotification(String key, Myorder requests)
     {
         Intent intent = new Intent(getBaseContext(),OrderStatus.class);
         intent.putExtra("userPhone",Common.currentUser.getMobile());  //saving mobile number for future reference...

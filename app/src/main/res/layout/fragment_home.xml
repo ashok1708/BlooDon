@@ -16,7 +16,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorAccent"
             app:title="Home"
-            android:layout_gravity="center"
+
             app:titleTextColor="@color/whiteCardColor"
 
            />

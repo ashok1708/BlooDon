@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
     Toolbar toolbar;
-    ViewPager viewPager;
-    private ViewPagerAdapter mViewPagerAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
-       // viewPager=findViewById(R.id.viewPager);
-        mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(mViewPagerAdapter);
-        //toolbar=findViewById(R.id.toolbar);
+
 
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
@@ -86,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 //toolbar.setTitle("Profile");
                             }
-                            viewPager.setCurrentItem(3);
+
                             openFragment(ProfileFragment.newInstance("", ""));
                             return true;
                     }

@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
   private RecyclerView.LayoutManager layoutManager;
   private BottomNavigation bottomNavigation;
   FirebaseRecyclerAdapter<Posts, PostViewHolder> adapter;
-  SwipeRefreshLayout swipeRefreshLayout;
+ private SwipeRefreshLayout swipeRefreshLayout;
 
 
   // TODO: Rename and change types of parameters
@@ -102,6 +102,8 @@ public class HomeFragment extends Fragment {
     layoutManager= new LinearLayoutManager(getContext());
     recycler_menu.setLayoutManager(layoutManager);
 
+    post.keepSynced(false);
+
 
     swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override
@@ -134,7 +136,7 @@ public class HomeFragment extends Fragment {
 
   private void loadPost()
   {
-     adapter = new FirebaseRecyclerAdapter<Posts, PostViewHolder>(Posts.class,R.layout.layout_post,PostViewHolder.class,post) {
+        adapter = new FirebaseRecyclerAdapter<Posts, PostViewHolder>(Posts.class,R.layout.layout_post,PostViewHolder.class,post) {
       @Override
       protected void populateViewHolder(PostViewHolder postViewHolder, Posts posts, int i) {
         postViewHolder.tvName.setText(posts.getCampName());

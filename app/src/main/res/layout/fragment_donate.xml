@@ -16,12 +16,37 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorAccent"
            app:title="Donate"
-            android:layout_gravity="center"
+
             app:titleTextColor="@color/whiteCardColor"
 
             />
-
-
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_recycle_donate"
+        android:layout_below="@id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyle_veiw_doner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <Button
+        android:id="@+id/btnDonate"
+        android:layout_below="@id/swipe_recycle_donate"
+        style="@style/loginButton"
+        android:text="Donate"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/supermolot_440"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
+
 
 </RelativeLayout>

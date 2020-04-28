@@ -46,6 +46,7 @@ public class SignUp extends AppCompatActivity {
         spnGroup=findViewById(R.id.spnGroup);
         btmSigUp=findViewById(R.id.btnSignUp);
 
+
         ArrayAdapter<String> adapterGender = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
                 getResources().getStringArray(R.array.gender));
 
@@ -60,6 +61,7 @@ public class SignUp extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
         reference= FirebaseDatabase.getInstance().getReference().child("user");
+
 
         btmSigUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +137,7 @@ public class SignUp extends AppCompatActivity {
                                 if (dataSnapshot.child(lmobile).exists()) {
                                     mDialog.dismiss();
                                     Toast.makeText(SignUp.this, "Number is already exists...", Toast.LENGTH_SHORT).show();
+
                                 } else {
                                     mDialog.dismiss();
                                     User user = new User(lname, lpass, lmobile, lfather, lage, lsex, bloodGroup, laddress);

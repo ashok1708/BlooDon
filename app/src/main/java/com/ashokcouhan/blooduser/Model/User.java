@@ -1,9 +1,5 @@
 package com.ashokcouhan.blooduser.Model;
 
-import com.ashokcouhan.blooduser.MyOrder;
-
-import java.util.ArrayList;
-
 public class User {
     private String name,password,mobile,fatherName,age,sex,bloodGroup,address;
 

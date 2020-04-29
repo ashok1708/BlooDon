@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -38,14 +39,13 @@ public class BookBlood extends AppCompatActivity  {
     TextView tvName,tvLocation,tvUnit,tvGroup,tvMsg;
     Button btnSubmit,btnDone;
     ImageView ivCheck;
-
-    String group,id,requireBlood,unit,Name;
+    String group,id,requireBlood,unit,Name,type;
     long currentSystemTime;
-
     FirebaseDatabase databaseReq,databaseOrder;
     DatabaseReference requests,userOrder;
-   Myorder myOrder;
+    Myorder myOrder;
     Requests request;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +54,12 @@ public class BookBlood extends AppCompatActivity  {
 
         FirebaseApp.initializeApp(this);
          Name=getIntent().getStringExtra("name");
-        group=getIntent().getStringExtra("group");
+        type=getIntent().getStringExtra("group");
         unit=getIntent().getStringExtra("unit");
         String location=getIntent().getStringExtra("location");
         id=getIntent().getStringExtra("id");
         requireBlood=getIntent().getStringExtra("requireBlood");
-
+        group=Common.getGroupType(type);
 
         databaseReq = FirebaseDatabase.getInstance();
         databaseOrder = FirebaseDatabase.getInstance();
@@ -81,40 +81,21 @@ public class BookBlood extends AppCompatActivity  {
         tvUnit=findViewById(R.id.groupUnit);
         tvGroup=findViewById(R.id.chooseGroup);
         btnSubmit=findViewById(R.id.btnConfirm);
-
         btnDone=findViewById(R.id.btnDone);
         tvMsg=findViewById(R.id.tvMsg);
         ivCheck=findViewById(R.id.ivCheck);
-
-
-
+        toolbar=findViewById(R.id.toolbar_bookBlood);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         tvName.setText(Name);
         tvUnit.setText(requireBlood);
         tvLocation.setText(location);
-
-        String type="";
-
-        if(group.equals("Aposi")){
-            type="A+";
-        }
-
-        if(group.equals("ABposi")){
-            type="AB+";
-        }
-        if(group.equals("Aneg")){
-            type="A-";
-        }if(group.equals("Bposi")){
-            type="B+";
-        }if(group.equals("Bneg")){
-            type="B-";
-        }if(group.equals("Oposi")){
-            type="O+";
-        }
-        if(group.equals("Oneg")){
-            type="O-";
-        }
-
         tvGroup.setText(type);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -130,11 +111,11 @@ public class BookBlood extends AppCompatActivity  {
     }
     private void showAlertDialog() {
         final AlertDialog.Builder builder= new AlertDialog.Builder(BookBlood.this);
-        builder.setTitle("Confirm Booking... ");
+        builder.setTitle("Confirm Booking");
+        builder.setIcon(R.drawable.ic_confirm);
          builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int which) {
-
                  try {
 
                      Log.d("Error", "get error");
@@ -145,24 +126,13 @@ public class BookBlood extends AppCompatActivity  {
                  finally {
                      userOrder.child(String.valueOf(currentSystemTime)).setValue(myOrder);
                  }
-
-
-
-
                  Toast.makeText(BookBlood.this, "Request is send to bank", Toast.LENGTH_SHORT).show();
-
-
                  requests.child(String.valueOf(currentSystemTime)).setValue(request);
                  // Log.d("error","this sis time to check");
-
                  btnSubmit.setVisibility(View.INVISIBLE);
-
                  ivCheck.setVisibility(View.VISIBLE);
                  tvMsg.setVisibility(View.VISIBLE);
                  btnDone.setVisibility(View.VISIBLE);
-
-
-
              }
          });
 

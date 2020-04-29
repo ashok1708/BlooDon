@@ -54,6 +54,7 @@ public class DonateFragment extends Fragment {
   private TextView errorMsg, errorMsg2;
   FirebaseRecyclerAdapter<Mydonation, DonateViewHolder> adapter;
   ArrayList<String> keys;
+  int days;
 
   // TODO: Rename and change types of parameters
   private String mParam1;
@@ -128,13 +129,11 @@ public class DonateFragment extends Fragment {
         Log.d("Srt",keys.toString());
         if (isEligible(keys.get(0)))
         {
-          Toast.makeText(getContext(), "User Eligible", Toast.LENGTH_SHORT).show();
+          Toast.makeText(getContext(), "Eligible to donate...", Toast.LENGTH_SHORT).show();
         }
         else{
-          btnDonate.setEnabled(false);
-          btnDonate.setTextColor(getResources().getColor(R.color.blackTextColor));
-          btnDonate.setBackground(getResources().getDrawable(R.drawable.disable_button));
-          Toast.makeText(getContext(), "Not eligible", Toast.LENGTH_SHORT).show();
+          int dif=90-days;
+          Toast.makeText(getContext(), "Not eligible to donate, "+dif+" days to remains..", Toast.LENGTH_SHORT).show();
         }
       }
     });
@@ -173,19 +172,30 @@ public class DonateFragment extends Fragment {
   }
 
   private boolean isEligible(String dt)  {
-    int monthDiff=-1;
+    Calendar sDate = Calendar.getInstance();
+      sDate.setTime(new Date(Long.parseLong(dt)));
+    Calendar eDate = Calendar.getInstance();
+      eDate.setTime(new Date(System.currentTimeMillis()));
 
-      Date date1 = new Date(Long.parseLong(dt));
-      Date date2=new Date();
-      Calendar now = Calendar.getInstance();
-      Calendar that = Calendar.getInstance();
-      that.setTime(date1);
+    int daysBetween = 0;
+    while (sDate.before(eDate))
+    {
+      sDate.add(Calendar.DAY_OF_MONTH, 1);
+      daysBetween ++;
+    }
 
-       monthDiff = now.get(Calendar.MONTH) - that.get(Calendar.MONTH);
-       long dayDiff= TimeUnit.DAYS.convert(date2.getTime()-date1.getTime(),TimeUnit.MICROSECONDS);
-       Log.d("Days",String.valueOf(dayDiff));
+    while (sDate.after(eDate))
+    {
+      eDate.add(Calendar.DAY_OF_MONTH, 1);
+      daysBetween ++;
+    }
 
-    Log.d("Datediff",String.valueOf(monthDiff));
-    return monthDiff > 3;
+    Log.d("Days",String.valueOf(daysBetween));
+    days=daysBetween;
+    if(daysBetween <= 90)
+    {
+      return false;
+    }
+    return true;
   }
 }

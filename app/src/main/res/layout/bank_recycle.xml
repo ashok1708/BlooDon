@@ -24,7 +24,7 @@
             android:id="@+id/tvName"
             android:layout_weight="1"
             android:textSize="20sp"
-            android:textColor="@color/blackTextColor"
+            android:textColor="@color/colorForGreyText"
             android:padding="10dp"
             android:textStyle="bold"
             android:layout_gravity="center"
@@ -40,7 +40,7 @@
                 android:layout_height="30dp"
                 android:paddingLeft="10dp"
                 android:textSize="20dp"
-                android:textColor="@color/blackTextColor"
+                android:textColor="@color/colorForGreyText"
                 android:text="Group : "/>
 
             <TextView
@@ -60,7 +60,7 @@
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="20dp"
-                android:textColor="@color/blackTextColor"
+                android:textColor="@color/colorForGreyText"
                 android:text="City : "/>
 
             <TextView

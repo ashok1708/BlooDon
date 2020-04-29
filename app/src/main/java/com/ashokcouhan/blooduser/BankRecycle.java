@@ -71,6 +71,7 @@ public class BankRecycle extends RecyclerView.Adapter<BankRecycle.ViewHolder>{
         group= Common.getGroupName(bloodBanks.get(position).getGroup());
 
         holder.tvGroup.setText(group);
+
         holder.tvLocation.setText(bloodBanks.get(position).getLocation());
 
 

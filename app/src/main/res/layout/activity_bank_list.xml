@@ -9,26 +9,24 @@
     tools:context=".BankList"
     >
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:background="@color/primaryTextColor"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        app:titleTextColor="@color/colorWhite"
-        android:background="@color/primaryTextColor">
+        android:layout_height="wrap_content">
 
-
-        <TextView
-            android:id="@+id/toolbarName"
-            style="@style/headerTextPrimary"
-            android:text="Blood Banks"
-            android:textSize="25dp"
-            android:textColor="@color/colorWhite"
-            />
-    </androidx.appcompat.widget.Toolbar>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_bankList"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorAccent"
+            app:title="Blood Banks"
+            app:titleTextColor="@color/whiteCardColor" />
+    </com.google.android.material.appbar.AppBarLayout>
     
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipplayout"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/appBarLayout"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">

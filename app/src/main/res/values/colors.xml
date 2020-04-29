@@ -14,7 +14,7 @@
     <color name="colorSecondaryDark">#001970</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorForBack">#F3F2EF</color>
-
+    <color name="colorForGreyText">#464646</color>
 
     <!--colors for modern ui-->
     <color name="whiteTextColor">#fff</color>

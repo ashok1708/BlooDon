@@ -49,7 +49,7 @@ public class BankList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_list);
 
-        toolbar=findViewById(R.id.toolbar);
+        toolbar=findViewById(R.id.toolbar_bankList);
        //  backBtn=findViewById(R.id.btnBack);
         swipeRefreshLayout=findViewById(R.id.swipplayout);
 

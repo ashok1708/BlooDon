@@ -72,7 +72,7 @@ public class OrderStatus extends AppCompatActivity {
                 orderViewHolder.txtOrderId.setText(adapter.getRef(i).getKey());
                 orderViewHolder.txtUnit.setText(myorder.getUnits());
                 orderViewHolder.txtOrderStatus.setText(Common.convertCodeToStatus(myorder.getStatus()));
-                orderViewHolder.txtGroup.setText(myorder.getGroupName());
+                orderViewHolder.txtGroup.setText(Common.getGroupName(myorder.getGroup()));
             }
 
              @Override

@@ -8,27 +8,28 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:background="@color/primaryTextColor"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_bookBlood"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorAccent"
+            app:title="Confirm Your Blood"
 
-        app:titleTextColor="@color/colorWhite"
-        android:background="@color/primaryTextColor">
-        <TextView
-            android:id="@+id/toolbarName"
-            style="@style/headerTextPrimary"
-            android:text="Book Blood"
-            android:textSize="25dp"
-            android:textColor="@color/colorWhite"
+            app:titleTextColor="@color/whiteCardColor"
+
             />
-    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
         android:id="@+id/layout_1"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -91,9 +92,8 @@
             android:textSize="20dp"
             android:textAllCaps="false"
             android:textStyle="normal"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"/>
 
 
 

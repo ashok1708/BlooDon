@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ashokcouhan.blooduser">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_icon_blood"
@@ -26,7 +28,9 @@
 
         <activity android:name=".BookBlood" />
         <activity android:name=".BankList" />
-        <activity android:name=".SignUp" />
+        <activity android:name=".SignUp">
+            android:windowSoftInputMode="adjustResize|adjustPan"
+        </activity>
         <activity android:name=".Login">
 
         </activity>

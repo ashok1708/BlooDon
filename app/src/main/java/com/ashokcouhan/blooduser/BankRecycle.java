@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.ashokcouhan.blooduser.Common.Common;
 import com.ashokcouhan.blooduser.Model.BloodBank;
 import com.ashokcouhan.blooduser.Model.SingleGroup;
 
@@ -26,7 +27,7 @@ public class BankRecycle extends RecyclerView.Adapter<BankRecycle.ViewHolder>{
 
     Context context;
     ArrayList<SingleGroup> bloodBanks;
-    String group,type,requireBlood;
+    String group,requireBlood;
 
 
     public BankRecycle(Context c , ArrayList<SingleGroup> p,String requireBlood){
@@ -38,13 +39,13 @@ public class BankRecycle extends RecyclerView.Adapter<BankRecycle.ViewHolder>{
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView tvName,tvUnit,tvGroup,tvLocation;
+        public TextView tvName,tvGroup,tvLocation;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvName=itemView.findViewById(R.id.tvName);
-            tvUnit=itemView.findViewById(R.id.units);
+
             tvGroup=itemView.findViewById(R.id.group);
             tvLocation=itemView.findViewById(R.id.location);
 
@@ -67,26 +68,9 @@ public class BankRecycle extends RecyclerView.Adapter<BankRecycle.ViewHolder>{
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.tvName.setText(bloodBanks.get(position).getName());
-        group=bloodBanks.get(position).getGroup();
+        group= Common.getGroupName(bloodBanks.get(position).getGroup());
 
-        if(group.equals("Aposi")){
-            type="A+";
-        }
-        if(group.equals("Aneg")){
-            type="A-";
-        }if(group.equals("Bposi")){
-            type="B+";
-        }if(group.equals("Bneg")){
-            type="B-";
-        }if(group.equals("Oposi")){
-            type="O+";
-        }
-        if(group.equals("Oneg")){
-            type="O-";
-        }
-
-        holder.tvGroup.setText(type);
-        holder.tvUnit.setText(bloodBanks.get(position).getQunatity());
+        holder.tvGroup.setText(group);
         holder.tvLocation.setText(bloodBanks.get(position).getLocation());
 
 

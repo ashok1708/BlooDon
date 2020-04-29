@@ -123,9 +123,9 @@ public class ProfileFragment extends Fragment {
     tvMainName.setText(Common.currentUser.getName());
     tvMobile.setText(Common.currentUser.getMobile());
     tvAddress.setText(Common.currentUser.getAddress());
-    tvGroup.setText(Common.currentUser.getBloodGroup());
+    tvGroup.setText(Common.getGroupName(Common.currentUser.getBloodGroup()));
     tvFather.setText(Common.currentUser.getFatherName());
-    tvAge.setText(Common.currentUser.getAge());
+    tvAge.setText(Common.getAge(Common.currentUser.getDob()));
 
     return root;
   }

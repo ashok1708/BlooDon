@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.helper.DateTimePickerEditText;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,11 +27,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tiper.MaterialSpinner;
 
+import java.util.Date;
+
 public class SignUp extends AppCompatActivity {
-    EditText edtName,edtMobile,edtPass,edtAge,edtAddress,edtFather;
+    EditText edtName,edtMobile,edtPass,edtAddress,edtFather;
     MaterialSpinner spnGender,spnGroup;
     Button btmSigUp;
     DatabaseReference reference;
+    DateTimePickerEditText edtDOB;
 
 
     @Override
@@ -39,12 +45,14 @@ public class SignUp extends AppCompatActivity {
         edtName=findViewById(R.id.edtName);
         edtMobile=findViewById(R.id.edtMobile);
         edtPass=findViewById(R.id.edtPassword);
-        edtAge=findViewById(R.id.edtAge);
+        //edtAge=findViewById(R.id.edtAge);
         edtAddress=findViewById(R.id.edtAddress);
         edtFather=findViewById(R.id.edtFather);
         spnGender=findViewById(R.id.spnGender);
         spnGroup=findViewById(R.id.spnGroup);
         btmSigUp=findViewById(R.id.btnSignUp);
+        edtDOB=findViewById(R.id.edtDOB);
+        edtDOB.setFormat("dd-MMM-yyyy");
 
 
         ArrayAdapter<String> adapterGender = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
@@ -62,6 +70,7 @@ public class SignUp extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         reference= FirebaseDatabase.getInstance().getReference().child("user");
 
+        edtPass.setTransformationMethod(new PasswordTransformationMethod());
 
         btmSigUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,82 +84,56 @@ public class SignUp extends AppCompatActivity {
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            String lname = "", lfather = "", lage = "", lsex = "", lmobile = "", laddress = "", bloodGroup = "", lpass = "";
+                            String lname = "", lfather = "",  lsex = "", lmobile = "", laddress = "", bloodGroup = "", lpass = "",ldob;
                             lname = edtName.getText().toString();
                             lpass = edtPass.getText().toString();
-                            lage = edtAge.getText().toString();
+                            Date dob=edtDOB.getDate();
+                            ldob=Common.dateToString(dob);
                             laddress = edtAddress.getText().toString();
                             lfather = edtFather.getText().toString();
                             lmobile = edtMobile.getText().toString();
                             bloodGroup = spnGroup.getSelectedItem().toString();
                             lsex = spnGender.getSelectedItem().toString();
 
-                            if (lname.isEmpty() && lpass.isEmpty() && lmobile.isEmpty() && lage.isEmpty() && laddress.isEmpty() && lfather.isEmpty()) {
+                          String groupName=Common.getGroupType(bloodGroup);
+
+                            if (lname.isEmpty() && lpass.isEmpty() && lmobile.isEmpty() && ldob.isEmpty() && laddress.isEmpty() && lfather.isEmpty()) {
                                 Toast.makeText(SignUp.this, "Please fill the information...", Toast.LENGTH_SHORT).show();
                                 mDialog.dismiss();
+                                return;
                             }
                             if (lmobile.isEmpty()) {
                                 edtMobile.setError("Please fill the number...");
                                 mDialog.dismiss();
+                                return;
                             }
                             if (lname.isEmpty()) {
                                 edtMobile.setError("Please fill the name...");
                                 mDialog.dismiss();
+                                return;
                             }
                             if (lpass.isEmpty()) {
                                 edtMobile.setError("Please set the password...");
                                 mDialog.dismiss();
-                            }
-                            if (spnGroup.getSelectedItem().toString().equals("choose blood group")) {
-                                Toast.makeText(SignUp.this, "Choose a Blood group", Toast.LENGTH_SHORT).show();
-                                mDialog.dismiss();
-                            } else {
-                                if (spnGroup.getSelectedItem().toString().equals("A+")) {
-                                    bloodGroup = "Aposi";
-                                }
-                                if (spnGroup.getSelectedItem().toString().equals("A-")) {
-                                    bloodGroup = "Aneg";
-                                }
-                                if (spnGender.getSelectedItem().toString().equals("B+")) {
-                                    bloodGroup = "Bposi";
-                                }
-
-                                if (spnGender.getSelectedItem().toString().equals("B-")) {
-                                    bloodGroup = "Bneg";
-                                }
-                                if (spnGroup.getSelectedItem().toString().equals("O+")) {
-                                    bloodGroup = "Oposi";
-                                }
-                                if (spnGroup.getSelectedItem().toString().equals("O-")) {
-                                    bloodGroup = "Oneg";
-                                }
-                                if (spnGender.getSelectedItem().toString().equals("AB+")) {
-                                    bloodGroup = "ABposi";
-
-                                }
-                                if (spnGender.getSelectedItem().toString().equals("AB-")) {
-                                    bloodGroup = "ABneg";
-                                }
+                                return;
                             }
 
-                            if (!lname.isEmpty() && !lpass.isEmpty() && !lmobile.isEmpty() && !lage.isEmpty() && !laddress.isEmpty() && !lfather.isEmpty()) {
+
+                            Log.d("check",bloodGroup+ " "+groupName);
                                 if (dataSnapshot.child(lmobile).exists()) {
                                     mDialog.dismiss();
                                     Toast.makeText(SignUp.this, "Number is already exists...", Toast.LENGTH_SHORT).show();
 
                                 } else {
                                     mDialog.dismiss();
-                                    User user = new User(lname, lpass, lmobile, lfather, lage, lsex, bloodGroup, laddress);
+                                    User user = new User(lname, lpass, lmobile, lfather, ldob, lsex, groupName, laddress);
+                                    Log.d("check2",user.getBloodGroup());
                                     reference.child(lmobile).setValue(user);
                                     Toast.makeText(SignUp.this, "Successfully SignUp...", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(SignUp.this, MainActivity.class);
                                     Common.currentUser = user;
                                     startActivity(intent);
                                 }
-
-                            }
-
-
                         }
 
                         @Override

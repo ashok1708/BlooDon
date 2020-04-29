@@ -1,7 +1,7 @@
 package com.ashokcouhan.blooduser.Model;
 
 public class User {
-    private String name,password,mobile,fatherName,age,sex,bloodGroup,address;
+    private String name,password,mobile,fatherName,dob,sex,bloodGroup,address;
 
 
 
@@ -10,12 +10,12 @@ public class User {
         this.mobile = mobile;
     }
 
-    public User(String name, String password, String mobile, String fatherName, String age, String sex, String bloodGroup, String address) {
+    public User(String name, String password, String mobile, String fatherName, String dob, String sex, String bloodGroup, String address) {
         this.name = name;
         this.password = password;
         this.mobile = mobile;
         this.fatherName = fatherName;
-        this.age = age;
+        this.dob = dob;
         this.sex = sex;
         this.bloodGroup = bloodGroup;
         this.address = address;
@@ -59,12 +59,12 @@ public class User {
         this.fatherName = fatherName;
     }
 
-    public String getAge() {
-        return age;
+    public String getDob() {
+        return dob;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getSex() {

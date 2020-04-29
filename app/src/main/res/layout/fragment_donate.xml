@@ -36,6 +36,26 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <TextView
+        android:id="@+id/tvErrorMsgDonate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/errorMsgDonate1"
+        android:textSize="22sp"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        />
+    <TextView
+        android:layout_below="@id/tvErrorMsgDonate"
+        android:id="@+id/tvErrorMsgDonate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/errorMsgDonate2"
+        android:textSize="22sp"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        />
+
 
     <Button
         android:id="@+id/btnDonate"

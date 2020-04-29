@@ -9,25 +9,29 @@
     tools:context=".OrderStatus"
     >
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayoutStatus"
+        android:background="@color/primaryTextColor"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content">
 
 
-        app:titleTextColor="@color/colorWhite"
-        android:background="@color/primaryTextColor">
-        <TextView
-            android:id="@+id/toolbarName"
-            style="@style/headerTextPrimary"
-            android:text="Status"
-            android:textSize="25dp"
-            android:textColor="@color/colorWhite"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_status"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorAccent"
+            app:title="Status"
+
+            app:titleTextColor="@color/whiteCardColor"
+
             />
-    </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/appBarLayoutStatus"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
@@ -35,4 +39,14 @@
         >
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tvErrorMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/errorMsg"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        />
 </RelativeLayout>

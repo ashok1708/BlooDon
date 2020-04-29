@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".SignUp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,6 +15,7 @@
         <LinearLayout
             style="@style/linearParent"
             android:orientation="vertical"
+            android:fitsSystemWindows="true"
             >
 
 
@@ -35,8 +36,6 @@
                     style="@style/modifiedEditText"
                     android:hint="Name"
                     android:maxLines="1"
-                    android:text="Ashok Chouhan"
-
                     android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,7 +51,6 @@
                     android:id="@+id/edtMobile"
                     style="@style/modifiedEditText"
                     android:hint="Mobile Number"
-                    android:text="9509856067"
                     android:maxLines="1"
                     android:maxEms="10"
                     android:inputType="number"/>
@@ -70,8 +68,6 @@
                     style="@style/modifiedEditText"
                     android:hint="Father Name/Husband Name"
                     android:maxLines="1"
-                    android:text="Ashok Chouhan"
-
                     android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,15 +77,17 @@
                 android:id="@+id/textInputPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTintMode="multiply"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_margin="6dp"
+
                 android:layout_marginTop="@dimen/loginViewsMargin">
                 <EditText
                     android:id="@+id/edtPassword"
                     style="@style/modifiedEditText"
                     android:hint=" Set Password"
                     android:maxLines="1"
-                    android:text="12345"
                     android:maxEms="10"
                     android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -98,6 +96,7 @@
                 android:id="@+id/spnGender"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
+                android:textSize="8sp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_margin="6dp"
                 android:hint="Gender"
@@ -111,12 +110,15 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_margin="6dp"
                 >
-                <EditText
-                    android:id="@+id/edtAge"
-                    style="@style/modifiedEditText"
-                    android:hint="Age"
-                    android:maxLines="1"
-                    android:inputType="number"/>
+                <android.helper.DateTimePickerEditText
+                    android:id="@+id/edtDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Date of birth"
+                    android:inputType="date"
+                    android:textSize="16sp"
+                    style="@style/Material.App.Dialog.DatePicker.Light"
+                    android:calendarViewShown="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.tiper.MaterialSpinner
@@ -124,6 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_centerVertical="true"
+                android:textSize="8sp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_margin="6dp"
                 app:spinnerMode="dialog"

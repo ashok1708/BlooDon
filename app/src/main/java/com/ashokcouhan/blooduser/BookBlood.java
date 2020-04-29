@@ -136,12 +136,14 @@ public class BookBlood extends AppCompatActivity  {
              public void onClick(DialogInterface dialog, int which) {
 
                  try {
-                     userOrder.child(String.valueOf(currentSystemTime)).setValue(myOrder);
+
                      Log.d("Error", "get error");
                  }
-                 catch (Exception e)
-                 {
+                 catch (Exception e) {
                      e.printStackTrace();
+                 }
+                 finally {
+                     userOrder.child(String.valueOf(currentSystemTime)).setValue(myOrder);
                  }
 
 

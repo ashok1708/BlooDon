@@ -54,4 +54,30 @@ public class Myorder {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getGroupName()
+    {
+        String type="";
+
+        if(this.group.equals("Aposi")){
+            type="A+";
+        }
+
+        if(this.group.equals("ABposi")){
+            type="AB+";
+        }
+        if(this.group.equals("Aneg")){
+            type="A-";
+        }if(this.group.equals("Bposi")){
+        type="B+";
+    }if(this.group.equals("Bneg")){
+        type="B-";
+    }if(this.group.equals("Oposi")){
+        type="O+";
+    }
+        if(this.group.equals("Oneg")){
+            type="O-";
+        }
+        return type;
+    }
 }

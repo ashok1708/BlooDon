@@ -9,6 +9,7 @@
     android:outlineSpotShadowColor="@color/colorTextView"
     android:outlineAmbientShadowColor="@color/colorTextView"
    android:layout_margin="10dp"
+    android:id="@+id/layoutOrder"
     android:background="@color/whiteCardColor">
 
     <LinearLayout
@@ -24,7 +25,26 @@
                 android:layout_marginTop="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
+                android:text="Blood Bank"
+                android:textColor="@color/colorTextView"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:id="@+id/orderName"
+                android:text="Blood bank"
+                android:layout_marginLeft="150dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
                 android:text="Order Id"
+                android:layout_below="@id/orderName"
                 android:textColor="@color/colorTextView"
                 android:textSize="16dp"/>
 
@@ -34,6 +54,7 @@
                 android:layout_height="25dp"
                 android:id="@+id/orderId"
                 android:text="26166551551"
+                android:layout_below="@id/orderName"
                 android:layout_marginLeft="150dp"
                 android:textColor="@color/colorBlack"
                 android:textSize="16dp"/>

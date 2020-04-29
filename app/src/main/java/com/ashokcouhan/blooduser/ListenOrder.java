@@ -80,10 +80,11 @@ public class ListenOrder extends Service implements ChildEventListener {
                 .setWhen(System.currentTimeMillis())
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setTicker("Blood User")
-                .setContentInfo("Your order was updated")
+                .setContentTitle("Your order was updated")
                 .setContentText("Order #"+key+" was updated status to "+ Common.convertCodeToStatus(requests.getStatus()))
                 .setContentIntent(contentIntent)
-                .setContentInfo("Info");
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("Order #"+key+" was updated status to "+ Common.convertCodeToStatus(requests.getStatus())+"\n"+"Donate Blood and Save Life.."))
+                .setAutoCancel(false);
 
         NotificationManager notificationManager =(NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)

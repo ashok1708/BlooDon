@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
+        Intent service= new Intent(MainActivity.this,ListenOrder.class);
+        startService(service);
 
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 

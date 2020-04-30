@@ -75,7 +75,7 @@ public class Login extends AppCompatActivity {
                         }
                     }
 
-                    reference.addValueEventListener(new ValueEventListener() {
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (dataSnapshot.child(lMobile).exists()) {
@@ -88,11 +88,14 @@ public class Login extends AppCompatActivity {
                                         Paper.book().write(Common.PWD_KEY, edtPass.getText().toString());
                                     }
 
-                                    String msg = "Welcome " + user.getName() + " ...";
+                                    String msg = "Welcome " + user.getName() ;
                                     Toast.makeText(Login.this, msg, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(Login.this, MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     Common.currentUser = user;
                                     startActivity(intent);
+                                    finish();
 
                                 } else {
                                     Toast.makeText(Login.this, "Wrong Password...", Toast.LENGTH_SHORT).show();
@@ -109,6 +112,41 @@ public class Login extends AppCompatActivity {
 
                         }
                     });
+//                    reference.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                            if (dataSnapshot.child(lMobile).exists()) {
+//                                mDialog.dismiss();
+//                                User user = dataSnapshot.child(lMobile).getValue(User.class);
+//                                user.setMobile(lMobile);
+//                                if (user.getPassword().equals(lPass)) {
+//                                    if (remeberBox.isChecked()) {
+//                                        Paper.book().write(Common.USER_KEY, edtMobile.getText().toString());
+//                                        Paper.book().write(Common.PWD_KEY, edtPass.getText().toString());
+//                                    }
+//
+//                                    String msg = "Welcome " + user.getName() + " ...";
+//                                    Toast.makeText(Login.this, msg, Toast.LENGTH_SHORT).show();
+//                                    Intent intent = new Intent(Login.this, MainActivity.class);
+//                                    Common.currentUser = user;
+//                                    startActivity(intent);
+//                                    finish();
+//
+//                                } else {
+//                                    Toast.makeText(Login.this, "Wrong Password...", Toast.LENGTH_SHORT).show();
+//
+//                                }
+//                            } else {
+//                                Toast.makeText(Login.this, "User Not Found...", Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
                 }
                 else{
                     Toast.makeText(Login.this, "Check your Internet Connection !!", Toast.LENGTH_SHORT).show();

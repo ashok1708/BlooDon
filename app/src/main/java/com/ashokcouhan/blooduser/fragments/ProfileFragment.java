@@ -110,6 +110,7 @@ public class ProfileFragment extends Fragment {
             case R.id.edtProfile:{
                 Intent intent=new Intent(getContext(), EditProfile.class);
                 startActivity(intent);
+                break;
             }
           case R.id.logout:{
 
@@ -118,6 +119,7 @@ public class ProfileFragment extends Fragment {
                        Intent mainIntent = new Intent(getContext(), Login.class);
                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
                        startActivity(mainIntent);
+                       break;
           }
         }
         return false;

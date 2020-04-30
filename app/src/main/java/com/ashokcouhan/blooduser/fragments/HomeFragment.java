@@ -102,8 +102,6 @@ public class HomeFragment extends Fragment {
     layoutManager= new LinearLayoutManager(getContext());
     recycler_menu.setLayoutManager(layoutManager);
 
-    post.keepSynced(false);
-
 
     swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override

@@ -88,40 +88,26 @@
         <View style="@style/proifleDetailsView" />
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
-                android:id="@+id/emailImageView"
-                android:src="@drawable/ic_email"
-                style="@style/profileDetailsImage" />
-
-            <TextView
-                android:text="Email"
-                android:layout_toRightOf="@id/emailImageView"
-                style="@style/profileDetailsTextMain" />
-
-            <TextView
-                android:id="@+id/mailTV"
-                android:text="ashok.chouhan148@appsnipp.com"
-                android:layout_toRightOf="@id/emailImageView"
-                style="@style/profileDetailsMiniText" />
-
-        </RelativeLayout>
-
-        <View style="@style/proifleDetailsView" />
-        <RelativeLayout style="@style/profileDetailsLayout">
-            <ImageView
                 android:id="@+id/addressImageView"
                 android:src="@drawable/ic_address"
                 style="@style/profileDetailsImage" />
 
             <TextView
+                android:id="@+id/add"
                 android:text="Address"
                 android:layout_toRightOf="@id/addressImageView"
                 style="@style/profileDetailsTextMain" />
 
             <TextView
                 android:id="@+id/addressTV"
-                android:text="Avenue 2nd Street NW SY."
+                android:text="Avenue 2nd Street NW SY"
                 android:layout_toRightOf="@id/addressImageView"
-                style="@style/profileDetailsMiniText" />
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/blackTextColor"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/add"/>
 
         </RelativeLayout>
 

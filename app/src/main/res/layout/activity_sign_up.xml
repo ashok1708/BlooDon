@@ -21,7 +21,7 @@
 
             <TextView
                 style="@style/headerTextPrimary"
-                android:text="Sign Up"
+                android:text="Edit Profile"
                 android:textSize="26dp"
                 android:fontFamily="@font/supermolot_440"
                 android:layout_marginTop="@dimen/loginViewsMargin"/>
@@ -135,16 +135,19 @@
                 />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputAdrees"
+                android:id="@+id/textInputAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_margin="6dp"
                 >
                 <EditText
+                    android:clickable="true"
                     android:id="@+id/edtAddress"
                     style="@style/modifiedEditText"
                     android:hint="Address"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
                     android:inputType="textPostalAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
 

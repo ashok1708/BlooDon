@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +22,7 @@ import androidx.fragment.app.Fragment;
 
 
 import com.ashokcouhan.blooduser.BankList;
+import com.ashokcouhan.blooduser.Common.Common;
 import com.ashokcouhan.blooduser.OrderStatus;
 import com.ashokcouhan.blooduser.R;
 import com.google.android.material.appbar.AppBarLayout;
@@ -41,7 +44,7 @@ public class SearchFragment extends Fragment  {
   EditText edtLocation,edtQunt;
   Button btnSearch;
   Toolbar toolbar;
-
+  String bloodGroup;
 
   // TODO: Rename and change types of parameters
   private String mParam1;
@@ -116,46 +119,35 @@ public class SearchFragment extends Fragment  {
     btnSearch.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        String bloodGroup="";
+
         String location=edtLocation.getText().toString();
         String quatity=edtQunt.getText().toString();
 
-        if (spnGroup.getSelectedItem().toString().equals("choose blood group")) {
-          Toast.makeText(getContext(), "Choose a Blood group", Toast.LENGTH_SHORT).show();
+
+        if(location.isEmpty())
+        {
+          edtLocation.setError("Please fill the location");
+          return;
         }
-        else {
-          if (spnGroup.getSelectedItem().toString().equals("A+")) {
-            bloodGroup = "Aposi";
-          }
-          if (spnGroup.getSelectedItem().toString().equals("A-")) {
-            bloodGroup = "Aneg";
-          }
-          if (spnGroup.getSelectedItem().toString().equals("B+")) {
-            bloodGroup = "Bposi";
-          }
+        if(quatity.isEmpty())
+        {
+          edtQunt.setError("Please fill the units");
+          return;
+        }
 
-          if (spnGroup.getSelectedItem().toString().equals("B-")) {
-            bloodGroup = "Bneg";
-          }
-          if (spnGroup.getSelectedItem().toString().equals("O+")) {
-            bloodGroup = "Oposi";
-          }
-          if (spnGroup.getSelectedItem().toString().equals("O-")) {
-            bloodGroup = "Oneg";
-          }
-          if (spnGroup.getSelectedItem().toString().equals("AB+")) {
-            bloodGroup = "ABposi";
-
-          }
-          if (spnGroup.getSelectedItem().toString().equals("AB-")) {
-            bloodGroup = "ABneg";
-          }
+        if(spnGroup.getSelectedItem().toString().equalsIgnoreCase("Choose the blood group"))
+        {
+          Toast.makeText(getActivity(), "Choose the blood group", Toast.LENGTH_SHORT).show();
+          return;
+        }
+        else{
+          bloodGroup=spnGroup.getSelectedItem().toString();
         }
 
         Intent intent=new Intent(getActivity(), BankList.class);
         intent.putExtra("location",location);
         intent.putExtra("unit",quatity);
-        intent.putExtra("group",bloodGroup);
+        intent.putExtra("group", Common.getGroupType(bloodGroup));
         startActivity(intent);
 
       }

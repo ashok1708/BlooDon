@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.ashokcouhan.blooduser.Common.Common;
+import com.ashokcouhan.blooduser.EditProfile;
 import com.ashokcouhan.blooduser.Login;
 import com.ashokcouhan.blooduser.R;
 import com.ashokcouhan.blooduser.SplashScreen;
@@ -103,9 +104,13 @@ public class ProfileFragment extends Fragment {
           case R.id.aboutUs:{
             break;
           }
-          case R.id.FAQ:{
+          case R.id.notificationMenu:{
 
           }
+            case R.id.edtProfile:{
+                Intent intent=new Intent(getContext(), EditProfile.class);
+                startActivity(intent);
+            }
           case R.id.logout:{
 
                      Paper.book().delete(Common.USER_KEY);

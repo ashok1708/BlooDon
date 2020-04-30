@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/loginCardRadius"
+    android:elevation="5dp"
+    app:cardElevation="5dp"
+    android:outlineSpotShadowColor="@color/colorTextView"
+    android:outlineAmbientShadowColor="@color/colorTextView"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputAdrees"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_margin="6dp"
+        >
+        <EditText
+            android:id="@+id/edtStreet"
+            style="@style/modifiedEditText"
+            android:hint="Plot N./ Street/ Area"
+            android:inputType="textPostalAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/textInputAdrees"
+        android:id="@+id/textInputAdrees2"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_margin="6dp"
+        >
+        <EditText
+            android:id="@+id/edtCity"
+            style="@style/modifiedEditText"
+            android:hint="City"
+            android:inputType="textPostalAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputAdrees4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputAdrees"
+        android:layout_marginLeft="195dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+        >
+        <EditText
+            android:id="@+id/edtPinCode"
+            style="@style/modifiedEditText"
+            android:hint="Pin Code"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.tiper.MaterialSpinner
+        android:layout_below="@id/textInputAdrees2"
+        android:id="@+id/spnState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_margin="6dp"
+        android:hint="State"
+        app:spinnerMode="dialog"
+        />
+
+        <Button
+        android:layout_below="@id/spnState"
+        android:id="@+id/btnCancel"
+        android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:background="@color/primaryTextColor"
+            android:textColor="@color/whiteTextColor"
+        android:text="Cancel"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"/>
+
+        <Button
+            android:layout_below="@id/spnState"
+            android:id="@+id/btnSbmt"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:background="@color/primaryTextColor"
+            android:textColor="@color/whiteTextColor"
+
+            android:text="Submit"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"/>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

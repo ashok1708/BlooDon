@@ -3,13 +3,17 @@ package com.ashokcouhan.blooduser;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.helper.DateTimePickerEditText;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +23,7 @@ import android.widget.Toast;
 
 import com.ashokcouhan.blooduser.Common.Common;
 import com.ashokcouhan.blooduser.Model.User;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +40,8 @@ public class SignUp extends AppCompatActivity {
     Button btmSigUp;
     DatabaseReference reference;
     DateTimePickerEditText edtDOB;
+    TextInputLayout inputLayoutAddress;
+    String stt="",cty="",stte="",pcd="";
 
 
     @Override
@@ -52,6 +59,7 @@ public class SignUp extends AppCompatActivity {
         spnGroup=findViewById(R.id.spnGroup);
         btmSigUp=findViewById(R.id.btnSignUp);
         edtDOB=findViewById(R.id.edtDOB);
+        inputLayoutAddress=findViewById(R.id.textInputAdd);
         edtDOB.setFormat("dd-MMM-yyyy");
 
 
@@ -71,6 +79,85 @@ public class SignUp extends AppCompatActivity {
         reference= FirebaseDatabase.getInstance().getReference().child("user");
 
         edtPass.setTransformationMethod(new PasswordTransformationMethod());
+
+      edtAddress.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+               final AlertDialog dialog= new AlertDialog.Builder(SignUp.this).create();
+              dialog.setTitle("Address");
+              dialog.setIcon(R.drawable.ic_home_black_24dp);
+              LayoutInflater inflater= getLayoutInflater();
+              final View  dialogView = inflater.inflate(R.layout.layout_address,null);
+              final EditText street =   dialogView.findViewById(R.id.edtStreet);
+              final EditText city =   dialogView.findViewById(R.id.edtCity);
+              final EditText pincode =   dialogView.findViewById(R.id.edtPinCode);
+              Button btnCancel =dialogView.findViewById(R.id.btnCancel);
+              Button btnSubmit =dialogView.findViewById(R.id.btnSbmt);
+              final MaterialSpinner spnState= dialogView.findViewById(R.id.spnState);
+
+              ArrayAdapter<String> adapterState = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item,
+                      getResources().getStringArray(R.array.india_states));
+
+              adapterState.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+              spnState.setAdapter(adapterState);
+              dialog.setView(dialogView);
+              dialog.setCancelable(false);
+
+              if(!stt.isEmpty() && !cty.isEmpty() && !stte.isEmpty() && !pcd.isEmpty() )
+              {
+                  street.setText(stt);
+                  city.setText(cty);
+                  pincode.setText(pcd);
+                  //spnState.setPrompt(stte);
+                  spnState.setSelection(adapterState.getPosition(stte));
+              }
+
+              btnSubmit.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      if(street.getText().toString().isEmpty())
+                      {
+                          street.setError("Please enter address");
+                          return;
+                      }
+                      if(city.getText().toString().isEmpty())
+                      {
+                          street.setError("Please enter city");
+                          return;
+                      }
+                      if(pincode.getText().toString().isEmpty())
+                      {
+                          street.setError("Please enter Pin Code");
+                          return;
+                      }
+
+                      stt=street.getText().toString();
+                      cty=city.getText().toString();
+                      stte=spnState.getSelectedItem().toString();
+                      pcd=pincode.getText().toString();
+
+                      String fullAdd=stt+" , "+cty+" , "+stte+" , "+pcd;
+                      edtAddress.setText(fullAdd);
+                      dialog.dismiss();
+
+                  }
+              });
+              btnCancel.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      if(stt.isEmpty() && cty.isEmpty() && stte.isEmpty() && pcd.isEmpty() )
+                      {
+                          Toast.makeText(SignUp.this, "Cannot fill the address", Toast.LENGTH_SHORT).show();
+                          dialog.dismiss();
+                      }
+
+                      dialog.dismiss();
+                  }
+              });
+
+              dialog.show();
+          }
+      });
 
         btmSigUp.setOnClickListener(new View.OnClickListener() {
             @Override

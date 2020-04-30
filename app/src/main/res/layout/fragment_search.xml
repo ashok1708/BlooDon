@@ -44,9 +44,9 @@
                 android:layout_height="55dp"
                 android:layout_centerVertical="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Blood Group"
-
-                android:layout_margin="10dp"
+                app:errorEnabled="true"
+                android:hint="Choose the blood group"
+                android:layout_margin="6dp"
                 app:spinnerMode="dialog"
                 />
 

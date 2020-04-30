@@ -9,13 +9,15 @@
         app:showAsAction="ifRoom" >
 
         <menu>
+            <item
+                android:id="@+id/edtProfile"
+                android:title="Edit Profile"/>
            <item
                android:id="@+id/aboutUs"
                android:title="About Us"/>
             <item
-                android:id="@+id/FAQ"
-                android:title="FAQ"/>
-
+                android:id="@+id/notificationMenu"
+                android:title="Notification"/>
             <item
                 android:id="@+id/logout"
                 android:title="Logout"/>

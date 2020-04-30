@@ -98,18 +98,23 @@ public class EditProfile extends AppCompatActivity {
                         String newPassword=conPass.getText().toString();
                         String conPassword=conPass.getText().toString();
 
-                        if(!Common.currentUser.getPassword().equals(oldPassword))
+                        if(Common.currentUser.getPassword().equals(oldPassword))
+                        {
+                            if(newPassword.equals(conPassword))
+                            {
+                                edtPass.setText(conPass.getText().toString());
+                                dialog.dismiss();
+                            }
+                            else
+                            {
+                                Toast.makeText(EditProfile.this, "Password not match..!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else
                         {
                             Toast.makeText(EditProfile.this, "Old Password is not match !", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        if(!newPassword.equals(conPassword))
-                        {
-                            Toast.makeText(EditProfile.this, "Password not match..!", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        edtPass.setText(conPass.getText().toString());
-                        dialog.dismiss();
                     }
                 });
                 btnCancel.setOnClickListener(new View.OnClickListener() {

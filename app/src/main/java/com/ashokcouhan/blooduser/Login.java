@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,8 @@ public class Login extends AppCompatActivity {
         btnLogin=findViewById(R.id.btnLogin);
         btnSignUp=findViewById(R.id.btnSignup);
         remeberBox=findViewById(R.id.rememberMe);
+
+        edtPass.setTransformationMethod(new PasswordTransformationMethod());
 
         Paper.init(this);  // save current user
 

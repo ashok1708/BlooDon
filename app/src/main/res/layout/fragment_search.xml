@@ -45,7 +45,7 @@
                 android:layout_centerVertical="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:errorEnabled="true"
-                android:hint="Choose the blood group"
+                android:hint="Blood Group"
                 android:layout_margin="6dp"
                 app:spinnerMode="dialog"
                 />

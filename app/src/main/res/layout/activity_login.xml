@@ -40,7 +40,7 @@
                 android:id="@+id/edtMobile"
                 style="@style/modifiedEditText"
                 android:hint="Mobile Number"
-
+                android:fontFamily="@font/poppins"
                 android:maxLines="1"
                 android:maxEms="10"
                 android:inputType="number"/>
@@ -50,6 +50,8 @@
             android:id="@+id/textInputPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTintMode="multiply"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -59,7 +61,7 @@
                 style="@style/modifiedEditText"
                 android:hint="Password"
                 android:maxLines="1"
-
+                android:fontFamily="@font/poppins"
                 android:maxEms="10"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>

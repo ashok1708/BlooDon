@@ -115,7 +115,7 @@ public class SearchFragment extends Fragment  {
 
     adapterGroup.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     spnGroup.setAdapter(adapterGroup);
-
+    spnGroup.setSelection(0);
     btnSearch.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
